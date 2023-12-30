@@ -2,7 +2,7 @@
 //  GeminiAIiOSApp.swift
 //  GeminiAIiOS
 //
-//  Created by Krishan Kumar on 27/12/23.
+//  Created by @TechHabiles on 27/12/23.
 //
 
 import SwiftUI
