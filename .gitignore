@@ -1,0 +1,12 @@
+
+.DS_Store
+
+.Trashes
+*.swp
+*.lock
+DerivedData/
+build/
+*.pbxuser
+xcuserdata/
+*.moved-aside
+GeminiAIiOS/Keys.swift
