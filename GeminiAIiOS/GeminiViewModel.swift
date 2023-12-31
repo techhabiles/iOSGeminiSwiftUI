@@ -7,6 +7,7 @@
 
 import Foundation
 import GoogleGenerativeAI
+import UIKit
 
 enum GEMINI_TYPE{
     case PRO
@@ -28,6 +29,31 @@ class GeminiViewModel : ObservableObject {
     @Published var prompt: String = ""
     @Published var response: String = ""
     @Published var inProgress = false
+    @Published var isImageSelected = false
+    
+    /**
+     * Describe Image or read text from Image
+     */
+    func describeImage(text: String, image: UIImage) async {
+        self.setResponse( "")
+  
+        do {
+            self.setProgress( true)
+            let resp = try await  model.generateContent(text, image)
+            if let responseText = resp.text {
+                self.setResponse(responseText)
+                self.setProgress(false)
+            }else{
+                self.setResponse("Error while fetching text")
+                self.setProgress(false)
+            }
+           
+            } catch  {
+                self.setProgress(false)
+                self.setResponse(error.localizedDescription)
+                
+            }
+    }
     
     /**
      *  Generates response as text from Gemini AI LLM model and update views
@@ -91,6 +117,11 @@ class GeminiViewModel : ObservableObject {
         setPrompt("")
         setProgress(false)
         setResponse("")
+    }
+    
+    func setImageSelected(selected: Bool){
+        self.isImageSelected = selected
+        self.response = ""
     }
 
 }
