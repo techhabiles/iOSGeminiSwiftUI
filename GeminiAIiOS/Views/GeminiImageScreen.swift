@@ -8,12 +8,16 @@
 import SwiftUI
 import UIKit
 import GoogleGenerativeAI
+import PhotosUI
 
 // Gemini Screen for Image Read Text & Describe
 
 struct GeminiImageButtonView: View{
     @Binding var selectedImage: UIImage?
+    @State var item : PhotosPickerItem?
     @State var showCamera: Bool = false
+    @State var showGallery: Bool = false
+    @EnvironmentObject var viewModel: GeminiViewModel
     var body: some View{
         HStack{
             THButton(title: "Camera", imageName: "camera", callBack: {
@@ -23,7 +27,18 @@ struct GeminiImageButtonView: View{
                 CameraImageview(selectedImage: self.$selectedImage)
             }
             Spacer()
-            THButton(title: "Gallery", imageName: "grid", callBack: {})
+             THButton(title: "Gallery", imageName: "grid", callBack: {
+                 self.showGallery = true
+             }).photosPicker(isPresented: $showGallery, selection: $item, matching: .images)
+                .onChange(of: item) { newItem in
+                    Task {
+                        if let data = try? await newItem?.loadTransferable(type: Data.self) {
+                                    selectedImage = UIImage(data: data)
+                                    viewModel.setImageSelected(selected: true)
+                                }
+                            }
+                    
+                }
         }
     }
 }
