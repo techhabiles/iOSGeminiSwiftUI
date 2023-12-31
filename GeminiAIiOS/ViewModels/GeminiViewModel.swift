@@ -31,12 +31,14 @@ class GeminiViewModel : ObservableObject {
     @Published var inProgress = false
     @Published var isImageSelected = false
     
+    var chat: Chat?
+    
     /**
      * Describe Image or read text from Image
      */
     func describeImage(text: String, image: UIImage) async {
         self.setResponse( "")
-  
+        
         do {
             self.setProgress( true)
             let resp = try await  model.generateContent(text, image)
@@ -47,12 +49,12 @@ class GeminiViewModel : ObservableObject {
                 self.setResponse("Error while fetching text")
                 self.setProgress(false)
             }
-           
-            } catch  {
-                self.setProgress(false)
-                self.setResponse(error.localizedDescription)
-                
-            }
+            
+        } catch  {
+            self.setProgress(false)
+            self.setResponse(error.localizedDescription)
+            
+        }
     }
     
     /**
@@ -66,26 +68,56 @@ class GeminiViewModel : ObservableObject {
             setResponse("Please enter query text")
             return
         }
+        let pText = prompt
+        setPrompt("")
         do {
             self.setProgress( true)
-            let p = "Summarize the following text for me: \(prompt)"
+            let p = "Summarize the following text for me: \(pText)"
             let outputContentStream = model.generateContentStream(p)
             self.setPrompt("")
             for try await outputContent in outputContentStream {
-                   guard let line = outputContent.text else {
-                     return
+                guard let line = outputContent.text else {
+                    return
                 }
-
-                self.setResponse(response + line)
-                 }
-            self.setProgress(false)
-            } catch  {
-                self.setProgress(false)
-                self.setResponse(error.localizedDescription)
                 
+                self.setResponse(response + line)
             }
-        
-
+            self.setProgress(false)
+        } catch  {
+            self.setProgress(false)
+            self.setResponse(error.localizedDescription)
+        }
+    }
+    /**
+     * Init chat session
+     */
+    func initChat(){
+        chat = model.startChat()
+    }
+    
+    /**
+     * Send next chat message
+     */
+    func sendMessage() async {
+        setProgress(true)
+        let pText = prompt
+        setPrompt("")
+        setResponse("\(response) Me: \(pText)\n")
+        do{
+            if let chatObj = chat {
+                let reply = try await chatObj.sendMessage(pText)
+                if let resp = reply.text {
+                    setResponse("\(response) Gemini: \(resp)\n")
+                }
+                setProgress(false)
+                setPrompt("")
+            }
+            
+        }catch{
+            print(" error is \(error.localizedDescription)")
+            setProgress(false)
+            setPrompt("")
+        }
     }
     /**
      *  Setter function for  prompt on Main Thread
@@ -103,6 +135,7 @@ class GeminiViewModel : ObservableObject {
             self.inProgress = value
         }
     }
+    
     
     /**
      *  Setter function for response on Main Thread
@@ -123,5 +156,5 @@ class GeminiViewModel : ObservableObject {
         self.isImageSelected = selected
         self.response = ""
     }
-
+    
 }

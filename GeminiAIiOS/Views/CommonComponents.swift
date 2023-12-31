@@ -44,8 +44,15 @@ struct OutputView: View{
     var body: some View{
         ZStack{
             Color.white
-            ScrollView{
-                Text(viewModel.response)
+            ScrollViewReader { proxy in
+                ScrollView{
+                    Text(viewModel.response)
+                        .id(1)
+                        .frame(alignment: .leading)
+                        
+                }.onChange(of: viewModel.response, perform: { _ in
+                    proxy.scrollTo(1, anchor: .bottom)
+                })
             }
             if(viewModel.inProgress){
                 ProgressView()

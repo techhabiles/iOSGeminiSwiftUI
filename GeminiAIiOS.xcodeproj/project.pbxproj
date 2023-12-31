@@ -21,6 +21,7 @@
 		7FA4D63B2B412783007F1E70 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA4D63A2B412783007F1E70 /* Utils.swift */; };
 		7FA4D63D2B41434F007F1E70 /* RadioGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA4D63C2B41434F007F1E70 /* RadioGroup.swift */; };
 		7FA4D63F2B415498007F1E70 /* CameraImageview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA4D63E2B415498007F1E70 /* CameraImageview.swift */; };
+		7FA4D6412B418EB5007F1E70 /* TextEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA4D6402B418EB5007F1E70 /* TextEntryView.swift */; };
 		7FD741A92B4047D80055EB7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7FD741A82B4047D80055EB7D /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		7FA4D63A2B412783007F1E70 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		7FA4D63C2B41434F007F1E70 /* RadioGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioGroup.swift; sourceTree = "<group>"; };
 		7FA4D63E2B415498007F1E70 /* CameraImageview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImageview.swift; sourceTree = "<group>"; };
+		7FA4D6402B418EB5007F1E70 /* TextEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEntryView.swift; sourceTree = "<group>"; };
 		7FD741A82B4047D80055EB7D /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,11 +75,11 @@
 		7F02459A2B3BCDD700997D46 /* GeminiAIiOS */ = {
 			isa = PBXGroup;
 			children = (
+				7FA4D6432B419F48007F1E70 /* ViewModels */,
+				7FA4D6422B419F21007F1E70 /* Launch */,
 				7FA4D6392B41276D007F1E70 /* Util */,
-				7FD741A82B4047D80055EB7D /* LaunchScreen.storyboard */,
 				7FD741AA2B404AAB0055EB7D /* Views */,
 				7F0245AE2B3EB65800997D46 /* Keys.swift */,
-				7F0245A92B3EAC6200997D46 /* GeminiViewModel.swift */,
 				7F02459B2B3BCDD700997D46 /* GeminiAIiOSApp.swift */,
 				7F02459F2B3BCDD900997D46 /* Assets.xcassets */,
 				7F0245A12B3BCDD900997D46 /* Preview Content */,
@@ -101,6 +103,22 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		7FA4D6422B419F21007F1E70 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				7FD741A82B4047D80055EB7D /* LaunchScreen.storyboard */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		7FA4D6432B419F48007F1E70 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7F0245A92B3EAC6200997D46 /* GeminiViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		7FD741AA2B404AAB0055EB7D /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +129,7 @@
 				7FA4D6372B412684007F1E70 /* CommonComponents.swift */,
 				7FA4D63C2B41434F007F1E70 /* RadioGroup.swift */,
 				7FA4D63E2B415498007F1E70 /* CameraImageview.swift */,
+				7FA4D6402B418EB5007F1E70 /* TextEntryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -196,6 +215,7 @@
 				7FA4D6362B412671007F1E70 /* GeminiMultiTurnAIScreen.swift in Sources */,
 				7FA4D63B2B412783007F1E70 /* Utils.swift in Sources */,
 				7F02459E2B3BCDD700997D46 /* MainScreen.swift in Sources */,
+				7FA4D6412B418EB5007F1E70 /* TextEntryView.swift in Sources */,
 				7F0245AF2B3EB65800997D46 /* Keys.swift in Sources */,
 				7FA4D6342B412653007F1E70 /* GeminiImageScreen.swift in Sources */,
 				7FA4D63F2B415498007F1E70 /* CameraImageview.swift in Sources */,
@@ -340,7 +360,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GeminiAIiOS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = GeminiAIiOS;
+				INFOPLIST_KEY_CFBundleDisplayName = "Gemini AI";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Need to capture image to descripe";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -373,7 +393,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GeminiAIiOS/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = GeminiAIiOS;
+				INFOPLIST_KEY_CFBundleDisplayName = "Gemini AI";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Need to capture image to descripe";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

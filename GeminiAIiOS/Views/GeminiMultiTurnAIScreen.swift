@@ -10,12 +10,25 @@ import SwiftUI
 // Gemini Screen for Multiturn conversation
 
 struct GeminiMultiTurn: View {
-    @EnvironmentObject var viewModel: GeminiViewModel
+    @StateObject var viewModel = GeminiViewModel()
+    
     var body: some View {
         VStack{
-            Text("Coming Soon").font(.title)
-        }.navigationTitle("Gemini Multi Turn")
+            TopView()
+            OutputView()
+            TextEntryView(callBack: {
+                Task{
+                    await viewModel.sendMessage()
+                }
+            })
+            
+        }.padding(10)
+            .navigationTitle("Gemini Multi-turn")
             .navigationBarTitleDisplayMode(.inline)
+            .environmentObject(viewModel)
+            .onAppear(){
+                viewModel.initChat()
+            }
     }
 }
 
