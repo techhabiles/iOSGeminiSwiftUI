@@ -75,7 +75,7 @@
 			children = (
 				7FA4D6392B41276D007F1E70 /* Util */,
 				7FD741A82B4047D80055EB7D /* LaunchScreen.storyboard */,
-				7FD741AA2B404AAB0055EB7D /* view */,
+				7FD741AA2B404AAB0055EB7D /* Views */,
 				7F0245AE2B3EB65800997D46 /* Keys.swift */,
 				7F0245A92B3EAC6200997D46 /* GeminiViewModel.swift */,
 				7F02459B2B3BCDD700997D46 /* GeminiAIiOSApp.swift */,
@@ -101,7 +101,7 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
-		7FD741AA2B404AAB0055EB7D /* view */ = {
+		7FD741AA2B404AAB0055EB7D /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				7F02459D2B3BCDD700997D46 /* MainScreen.swift */,
@@ -112,7 +112,7 @@
 				7FA4D63C2B41434F007F1E70 /* RadioGroup.swift */,
 				7FA4D63E2B415498007F1E70 /* CameraImageview.swift */,
 			);
-			path = view;
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
