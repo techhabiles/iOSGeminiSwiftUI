@@ -79,7 +79,6 @@ class GeminiViewModel : ObservableObject {
                 guard let line = outputContent.text else {
                     return
                 }
-                
                 self.setResponse(response + line)
             }
             self.setProgress(false)

@@ -14,7 +14,7 @@ struct TextEntryView: View {
     
     var body: some View {
         HStack{
-            TextField("Enter text", text: $viewModel.prompt, axis: .vertical)
+            TextField("Enter Text", text: $viewModel.prompt, axis: .vertical)
                 .focused($isFocused)
                 .frame(height: 40)
                 .padding(.leading, 5)
